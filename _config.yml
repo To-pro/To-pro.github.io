@@ -3,7 +3,7 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Hexo
+title: Chih Chia's Blog
 subtitle: ''
 description: ''
 keywords:
@@ -97,12 +97,12 @@ ignore:
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: landscape
+# theme: landscape
+theme: shoka
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
   type: git
-  repo: 
-    github: git@github.com:To-pro/To-pro.github.io.git
+  repo: https://github.com/To-pro/To-pro.github.io.git
   branch: gh-pages
