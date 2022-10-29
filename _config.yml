@@ -7,14 +7,16 @@ title: Chih Chia's Blog
 subtitle: ''
 description: ''
 keywords:
-author: Chih Chia , Chen
-language: en
+author: Chih-Chia Chen
+# language: en
+language: zh-TW
 timezone: ''
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
 url: http://example.com
-permalink: :year/:month/:day/:title/
+# permalink: :year/:month/:day/:title/ 預設
+permalink: :title/
 permalink_defaults:
 pretty_urls:
   trailing_index: true # Set to false to remove trailing 'index.html' from permalinks
@@ -68,6 +70,7 @@ index_generator:
 # Category & Tag
 default_category: uncategorized
 category_map:
+  Hexo 筆記: Hexo
 tag_map:
 
 # Metadata elements
