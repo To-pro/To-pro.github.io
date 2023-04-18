@@ -14,7 +14,7 @@ timezone: ''
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
-url: http://example.com
+url: https://to-pro.github.io/
 # permalink: :year/:month/:day/:title/ 預設
 permalink: :title/
 permalink_defaults:
@@ -70,7 +70,8 @@ index_generator:
 # Category & Tag
 default_category: uncategorized
 category_map:
-  Hexo 筆記: Hexo
+  # Hexo 筆記: Hexo
+  MATLAB 筆記: matlab
 tag_map:
 
 # Metadata elements
