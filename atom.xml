@@ -3,7 +3,80 @@
     <id>https://to-pro.github.io</id>
     <title>Chih Chia&#39;s Blog</title>
     <link href="https://to-pro.github.io" />
-    <updated>2023-03-21T03:53:08.909Z</updated>
+    <updated>2023-04-22T15:29:38.656Z</updated>
+    <entry>
+        <id>https://to-pro.github.io/camera/basic/</id>
+        <title>相機拍照參數</title>
+        <link rel="alternate" href="https://to-pro.github.io/camera/basic/"/>
+        <content type="html">&lt;p&gt;當使用相機拍攝照片時，可以調整多個參數以控制曝光和影像效果。以下是這些參數的基本介紹：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;參數&lt;/th&gt;
+&lt;th&gt;作用&lt;/th&gt;
+&lt;th&gt;影像效果&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;快門速度&lt;/td&gt;
+&lt;td&gt;控制感光元件曝光時間&lt;/td&gt;
+&lt;td&gt;決定照片中動態物體的清晰度，快門速度越快，動態物體越清晰，反之亦然&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;光圈&lt;/td&gt;
+&lt;td&gt;控制進入相機的光線量&lt;/td&gt;
+&lt;td&gt;決定照片中景深的大小，光圈越大，景深越淺，背景模糊效果越明顯&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ISO 感光度&lt;/td&gt;
+&lt;td&gt;控制感光元件的靈敏度&lt;/td&gt;
+&lt;td&gt;決定照片中噪點的多寡，ISO 感光度越高，噪點越明顯，反之亦然&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;對焦&lt;/td&gt;
+&lt;td&gt;確定照片中的主體&lt;/td&gt;
+&lt;td&gt;決定照片中主體的清晰度和背景的模糊度&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;曝光補償&lt;/td&gt;
+&lt;td&gt;調整曝光值&lt;/td&gt;
+&lt;td&gt;在光線環境複雜的情況下，調整曝光值以獲得正確的曝光效果&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;白平衡&lt;/td&gt;
+&lt;td&gt;控制影像中的色溫&lt;/td&gt;
+&lt;td&gt;能夠呈現出真實的色彩，避免照片出現色偏現象&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;詳細說明:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;快門速度（Shutter Speed）：這是指相機打開快門的時間長度，也就是相機所曝光的時間。較長的曝光時間可讓更多的光進入相機，通常用於拍攝低光環境下的照片或拍攝長時間的影像，如星軌攝影等。較短的曝光時間可以凍結快速運動的物體，避免過度曝光或模糊的照片。快門速度是以秒為單位進行測量的，例如 1/60、1/125 等。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;光圈（Aperture）：這是指鏡頭的開口大小，決定了相機所進入的光線量。較大的光圈可以讓更多的光進入相機，增加景深，通常用於拍攝近景或需要模糊背景的照片。較小的光圈則可以減少景深，使照片更加清晰，通常用於拍攝遠景或需要整個場景清晰的照片。光圈是用 f / 數來表示的，例如 f/2.8、f/4 等。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;ISO 感光度：是相機感光元件的靈敏度，決定了相機捕捉光線的能力。較高的 ISO 感光度可以在低光環境下拍攝照片，但也會增加噪點和影像失真的風險。較低的 ISO 感光度可以提高影像的清晰度和色彩還原度，但在低光環境下可能需要較長的曝光時間或較大的光圈來保持曝光正確。ISO 感光度通常以數字表示，例如 ISO100、ISO200 等。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;曝光補償（Exposure Compensation）：曝光補償是指在相機自動曝光模式下，對自動曝光所設定的快門速度和光圈進行微調。曝光補償通常以曝光值（EV）為單位進行調整，正值代表增加曝光，負值代表減少曝光。攝影師可以根據實際情況進行曝光補償，例如拍攝高反差場景時，可以增加曝光補償以避免過曝。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;焦距（Focal Length）：這是指鏡頭的光學距離，通常以毫米為單位表示。焦距越長，鏡頭能夠拍攝到的物體越遠，同時也會使景深更淺。焦距越短，鏡頭能夠拍攝到的物體越近，同時也會使景深更深。焦距還可以用來調整照片的構圖，例如廣角鏡頭可以拍攝到更廣闊的場景，長焦鏡頭可以將遠處的物體拉近。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;白平衡：這是指相機調整色彩平衡以使白色看起來真正白色的過程。當照片中的色調偏冷或偏暖時，可以通過調整白平衡來糾正色彩偏差。不同的燈光條件下，需要不同的白平衡設置，因為不同的燈光源有不同的顏色溫度。顏色溫度以開爾文為單位進行測量，例如 2800K、5500K 等。相機通常有預設的白平衡設置，如自動、陽光、陰影、白熾燈等。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;這些參數可以用來控制相機的曝光和影像效果，可以根據拍攝情況調整這些參數以獲得最佳的照片效果。然而，這些參數之間也有複雜的關係，需要仔細平衡才能獲得最佳的照片效果。&lt;/p&gt;
+&lt;p&gt;例如，在控制曝光時，可以使用快門速度、光圈和 ISO 感光度這三個參數的組合來達到理想的曝光值。快門速度和光圈的大小決定進入相機的光線量，ISO 感光度可以用來調整相機感光元件的靈敏度。如果使用較慢的快門速度和較小的光圈，可能需要提高 ISO 感光度以保持曝光正確。同樣地，如果使用較快的快門速度和較大的光圈，可能需要降低 ISO 感光度以避免過度曝光。&lt;/p&gt;
+&lt;p&gt;總之，理解和掌握這些參數是拍攝高質量照片的關鍵。通過調整這些參數，可以創造出獨特的影像風格，捕捉特定場景的美麗瞬間，並表達自己的創意和想像力。&lt;/p&gt;
+</content>
+        <updated>2023-04-22T15:29:38.656Z</updated>
+    </entry>
     <entry>
         <id>https://to-pro.github.io/matlab/note_part2/</id>
         <title>Matlab figure 筆記2</title>
@@ -202,6 +275,7 @@ E(\mathbf{XY})&amp;amp;=E(\mathbf{X})E(\mathbf{Y})\\
 &lt;p&gt;證明樣本平均數 &lt;span class=&#34;katex&#34;&gt;&lt;span class=&#34;katex-mathml&#34;&gt;&lt;math xmlns=&#34;http://www.w3.org/1998/Math/MathML&#34;&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mover accent=&#34;true&#34;&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;mo&gt;ˉ&lt;/mo&gt;&lt;/mover&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;\bar{x}&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&#34;katex-html&#34; aria-hidden=&#34;true&#34;&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:0.56778em;vertical-align:0em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord accent&#34;&gt;&lt;span class=&#34;vlist-t&#34;&gt;&lt;span class=&#34;vlist-r&#34;&gt;&lt;span class=&#34;vlist&#34; style=&#34;height:0.56778em;&#34;&gt;&lt;span style=&#34;top:-3em;&#34;&gt;&lt;span class=&#34;pstrut&#34; style=&#34;height:3em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord&#34;&gt;&lt;span class=&#34;mord mathnormal&#34;&gt;x&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;top:-3em;&#34;&gt;&lt;span class=&#34;pstrut&#34; style=&#34;height:3em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;accent-body&#34; style=&#34;left:-0.22222em;&#34;&gt;&lt;span class=&#34;mord&#34;&gt;ˉ&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; 是母體平均數 &lt;span class=&#34;katex&#34;&gt;&lt;span class=&#34;katex-mathml&#34;&gt;&lt;math xmlns=&#34;http://www.w3.org/1998/Math/MathML&#34;&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi&gt;μ&lt;/mi&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;\mu&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&#34;katex-html&#34; aria-hidden=&#34;true&#34;&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:0.625em;vertical-align:-0.19444em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34;&gt;μ&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; 之不偏估計量&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;katex-display&#34;&gt;&lt;span class=&#34;katex&#34;&gt;&lt;span class=&#34;katex-mathml&#34;&gt;&lt;math xmlns=&#34;http://www.w3.org/1998/Math/MathML&#34; display=&#34;block&#34;&gt;&lt;semantics&gt;&lt;mtable rowspacing=&#34;0.24999999999999992em&#34; columnalign=&#34;right left&#34; columnspacing=&#34;0em&#34;&gt;&lt;mtr&gt;&lt;mtd&gt;&lt;mstyle scriptlevel=&#34;0&#34; displaystyle=&#34;true&#34;&gt;&lt;mrow&gt;&lt;mi&gt;E&lt;/mi&gt;&lt;mo stretchy=&#34;false&#34;&gt;(&lt;/mo&gt;&lt;mover accent=&#34;true&#34;&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;mo&gt;ˉ&lt;/mo&gt;&lt;/mover&gt;&lt;mo stretchy=&#34;false&#34;&gt;)&lt;/mo&gt;&lt;/mrow&gt;&lt;/mstyle&gt;&lt;/mtd&gt;&lt;mtd&gt;&lt;mstyle scriptlevel=&#34;0&#34; displaystyle=&#34;true&#34;&gt;&lt;mrow&gt;&lt;mrow&gt;&lt;/mrow&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mi&gt;E&lt;/mi&gt;&lt;mrow&gt;&lt;mo fence=&#34;true&#34;&gt;(&lt;/mo&gt;&lt;mfrac&gt;&lt;mrow&gt;&lt;msub&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;/msub&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;msub&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/msub&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;mo&gt;⋯&lt;/mo&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;msub&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;/msub&gt;&lt;/mrow&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;/mfrac&gt;&lt;mo fence=&#34;true&#34;&gt;)&lt;/mo&gt;&lt;/mrow&gt;&lt;/mrow&gt;&lt;/mstyle&gt;&lt;/mtd&gt;&lt;/mtr&gt;&lt;mtr&gt;&lt;mtd&gt;&lt;mstyle scriptlevel=&#34;0&#34; displaystyle=&#34;true&#34;&gt;&lt;mrow&gt;&lt;/mrow&gt;&lt;/mstyle&gt;&lt;/mtd&gt;&lt;mtd&gt;&lt;mstyle scriptlevel=&#34;0&#34; displaystyle=&#34;true&#34;&gt;&lt;mrow&gt;&lt;mrow&gt;&lt;/mrow&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mfrac&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;/mfrac&gt;&lt;mi&gt;E&lt;/mi&gt;&lt;mrow&gt;&lt;mo fence=&#34;true&#34;&gt;(&lt;/mo&gt;&lt;msub&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;/msub&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;msub&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/msub&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;mo&gt;⋯&lt;/mo&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;msub&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;/msub&gt;&lt;mo fence=&#34;true&#34;&gt;)&lt;/mo&gt;&lt;/mrow&gt;&lt;/mrow&gt;&lt;/mstyle&gt;&lt;/mtd&gt;&lt;/mtr&gt;&lt;mtr&gt;&lt;mtd&gt;&lt;mstyle scriptlevel=&#34;0&#34; displaystyle=&#34;true&#34;&gt;&lt;mrow&gt;&lt;/mrow&gt;&lt;/mstyle&gt;&lt;/mtd&gt;&lt;mtd&gt;&lt;mstyle scriptlevel=&#34;0&#34; displaystyle=&#34;true&#34;&gt;&lt;mrow&gt;&lt;mrow&gt;&lt;/mrow&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mfrac&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;/mfrac&gt;&lt;mrow&gt;&lt;mo fence=&#34;true&#34;&gt;(&lt;/mo&gt;&lt;mi&gt;E&lt;/mi&gt;&lt;mo stretchy=&#34;false&#34;&gt;(&lt;/mo&gt;&lt;msub&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;/msub&gt;&lt;mo stretchy=&#34;false&#34;&gt;)&lt;/mo&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;mi&gt;E&lt;/mi&gt;&lt;mo stretchy=&#34;false&#34;&gt;(&lt;/mo&gt;&lt;msub&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/msub&gt;&lt;mo stretchy=&#34;false&#34;&gt;)&lt;/mo&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;mo&gt;⋯&lt;/mo&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;mi&gt;E&lt;/mi&gt;&lt;mo stretchy=&#34;false&#34;&gt;(&lt;/mo&gt;&lt;msub&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;/msub&gt;&lt;mo stretchy=&#34;false&#34;&gt;)&lt;/mo&gt;&lt;mo fence=&#34;true&#34;&gt;)&lt;/mo&gt;&lt;/mrow&gt;&lt;/mrow&gt;&lt;/mstyle&gt;&lt;/mtd&gt;&lt;/mtr&gt;&lt;mtr&gt;&lt;mtd&gt;&lt;mstyle scriptlevel=&#34;0&#34; displaystyle=&#34;true&#34;&gt;&lt;mrow&gt;&lt;/mrow&gt;&lt;/mstyle&gt;&lt;/mtd&gt;&lt;mtd&gt;&lt;mstyle scriptlevel=&#34;0&#34; displaystyle=&#34;true&#34;&gt;&lt;mrow&gt;&lt;mrow&gt;&lt;/mrow&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mfrac&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;/mfrac&gt;&lt;mrow&gt;&lt;mo fence=&#34;true&#34;&gt;(&lt;/mo&gt;&lt;mi&gt;μ&lt;/mi&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;mi&gt;μ&lt;/mi&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;mo&gt;⋯&lt;/mo&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;mi&gt;μ&lt;/mi&gt;&lt;mo fence=&#34;true&#34;&gt;)&lt;/mo&gt;&lt;/mrow&gt;&lt;/mrow&gt;&lt;/mstyle&gt;&lt;/mtd&gt;&lt;/mtr&gt;&lt;mtr&gt;&lt;mtd&gt;&lt;mstyle scriptlevel=&#34;0&#34; displaystyle=&#34;true&#34;&gt;&lt;mrow&gt;&lt;/mrow&gt;&lt;/mstyle&gt;&lt;/mtd&gt;&lt;mtd&gt;&lt;mstyle scriptlevel=&#34;0&#34; displaystyle=&#34;true&#34;&gt;&lt;mrow&gt;&lt;mrow&gt;&lt;/mrow&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mfrac&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;/mfrac&gt;&lt;mrow&gt;&lt;mo fence=&#34;true&#34;&gt;(&lt;/mo&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;mi&gt;μ&lt;/mi&gt;&lt;mo fence=&#34;true&#34;&gt;)&lt;/mo&gt;&lt;/mrow&gt;&lt;/mrow&gt;&lt;/mstyle&gt;&lt;/mtd&gt;&lt;/mtr&gt;&lt;mtr&gt;&lt;mtd&gt;&lt;mstyle scriptlevel=&#34;0&#34; displaystyle=&#34;true&#34;&gt;&lt;mrow&gt;&lt;/mrow&gt;&lt;/mstyle&gt;&lt;/mtd&gt;&lt;mtd&gt;&lt;mstyle scriptlevel=&#34;0&#34; displaystyle=&#34;true&#34;&gt;&lt;mrow&gt;&lt;mrow&gt;&lt;/mrow&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mi&gt;μ&lt;/mi&gt;&lt;/mrow&gt;&lt;/mstyle&gt;&lt;/mtd&gt;&lt;/mtr&gt;&lt;/mtable&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;\begin{aligned}
 E(\bar{x}) &amp;amp;= E\left( \frac{x_1 + x_2 + \cdots + x_n}{n}  \right)\\
+% E(\bar{x}) &amp;amp;= E( \frac{x_1 + x_2 + \cdots + x_n}{n}  )\\
            &amp;amp;= \frac{1}{n}E\left( x_1 + x_2 + \cdots + x_n  \right)\\
            &amp;amp;= \frac{1}{n}\left( E(x_1) + E(x_2) + \cdots + E(x_n)  \right)\\
            &amp;amp;= \frac{1}{n}\left( \mu + \mu + \cdots + \mu  \right)\\
