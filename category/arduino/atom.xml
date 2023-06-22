@@ -279,9 +279,9 @@ plot_set(14,2);
 &lt;li&gt;執行結果&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;資料:&lt;/p&gt;
-&lt;p&gt;&amp;lt;img src=“&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9pbWd1ci5jb20vQ0VScWJMQi5qcGc=&#34;&gt;https://imgur.com/CERqbLB.jpg&lt;/span&gt;” width = 50% &amp;gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://imgur.com/CERqbLB.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;間隔時間:&lt;/p&gt;
-&lt;p&gt;&amp;lt;img src=“&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9pbWd1ci5jb20veUw4VWd4US5qcGc=&#34;&gt;https://imgur.com/yL8UgxQ.jpg&lt;/span&gt;” width = 50% &amp;gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://imgur.com/CERqbLB.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;可以看到間隔時間並不固定，因此擷取頻率會受到影響 (仍需解決)&lt;/p&gt;
 </content>
         <updated>2023-04-25T05:58:06.895Z</updated>
