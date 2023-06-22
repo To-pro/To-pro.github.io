@@ -8,9 +8,9 @@
         <pubDate>Tue, 25 Apr 2023 13:58:06 +0800</pubDate>
         <lastBuildDate>Tue, 25 Apr 2023 13:58:06 +0800</lastBuildDate>
         <item>
-            <guid isPermalink="true">https://to-pro.github.io/Arduino/SD_write_bin/</guid>
+            <guid isPermalink="true">https://to-pro.github.io/arduino/SD_write_bin/</guid>
             <title>SD卡寫入數據</title>
-            <link>https://to-pro.github.io/Arduino/SD_write_bin/</link>
+            <link>https://to-pro.github.io/arduino/SD_write_bin/</link>
             <pubDate>Tue, 25 Apr 2023 13:58:06 +0800</pubDate>
             <description><![CDATA[ &lt;h2 id=&#34;通訊方式&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#通訊方式&#34;&gt;#&lt;/a&gt; 通訊方式&lt;/h2&gt;
 &lt;p&gt;SD 卡可以透過 SPI 或 MMC 介面與系統進行通訊，兩者有以下的差異與優缺點：&lt;/p&gt;
