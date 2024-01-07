@@ -1,0 +1,16 @@
+{
+    "version": "https://jsonfeed.org/version/1",
+    "title": "Chih Chia's Blog • All posts by \"book\" category",
+    "description": "",
+    "home_page_url": "https://to-pro.github.io",
+    "items": [
+        {
+            "id": "https://to-pro.github.io/book/poor_economics/",
+            "url": "https://to-pro.github.io/book/poor_economics/",
+            "title": "<<貧窮的本質>>",
+            "date_published": "2024-01-07T12:35:26.750Z",
+            "content_html": "<p>貧窮的本質</p>\n",
+            "tags": []
+        }
+    ]
+}
