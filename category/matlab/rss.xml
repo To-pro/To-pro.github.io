@@ -5,8 +5,663 @@
         <link>https://to-pro.github.io</link>
         <description></description>
         <language>zh-TW</language>
-        <pubDate>Tue, 21 Mar 2023 11:53:08 +0800</pubDate>
-        <lastBuildDate>Tue, 21 Mar 2023 11:53:08 +0800</lastBuildDate>
+        <pubDate>Wed, 23 Oct 2024 17:49:20 +0800</pubDate>
+        <lastBuildDate>Wed, 23 Oct 2024 17:49:20 +0800</lastBuildDate>
+        <item>
+            <guid isPermalink="true">https://to-pro.github.io/matlab/lesson4/</guid>
+            <title>動畫 lesson 4</title>
+            <link>https://to-pro.github.io/matlab/lesson4/</link>
+            <pubDate>Wed, 23 Oct 2024 17:49:20 +0800</pubDate>
+            <description><![CDATA[ &lt;p&gt;結合前面的介紹，我們可以將無人機飛行模擬結果繪製成動畫。&lt;/p&gt;
+&lt;p&gt;範例中的 MAT 檔 (auto_fly_90.mat) 裡面有兩個結構變數分別是飛行資料 data 和期望軌跡 desired_trajectory&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;data:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;t: 時間&lt;/li&gt;
+&lt;li&gt;x: 無人機 x 位置&lt;/li&gt;
+&lt;li&gt;y: 無人機 y 位置&lt;/li&gt;
+&lt;li&gt;z: 無人機 z 位置&lt;/li&gt;
+&lt;li&gt;P:[x;y;z] 無人機位置&lt;/li&gt;
+&lt;li&gt;phi,theta,psi: 無人機姿態&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;desired_trajectory:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;waypoint: 航點&lt;/li&gt;
+&lt;li&gt;x_d: 無人機期望 x 位置&lt;/li&gt;
+&lt;li&gt;y_d: 無人機期望 y 位置&lt;/li&gt;
+&lt;li&gt;z_d: 無人機期望 z 位置&lt;/li&gt;
+&lt;li&gt;phi_d,theta_d,psi_d: 無人機期望姿態&lt;/li&gt;
+&lt;li&gt;p: 小圖期望位置&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;成果展示&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#成果展示&#34;&gt;#&lt;/a&gt; 成果展示:&lt;/h3&gt;
+&lt;p&gt;&lt;img data-src=&#34;lesson4.png&#34; alt=&#34;alt text&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;範例的 STL 與 MAT 可以在這邊下載:&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9kcml2ZS5nb29nbGUuY29tL2RyaXZlL2ZvbGRlcnMvMUxBbUlWNzFuUTRtaHVQUWxnWm5PNDVGZjBKUEN2Z3Z3P3VzcD1kcml2ZV9saW5r&#34;&gt; 載點&lt;/span&gt;&lt;/p&gt;
+&lt;h3 id=&#34;程式碼&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#程式碼&#34;&gt;#&lt;/a&gt; 程式碼:&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-MATLAB&#34;&gt;%全地圖畫法
+clc;clear;close all;
+
+addpath &#39;Z:\My Drive\MATLAB\plot_function&#39;
+addpath(genpath(&#39;.\STL\450&#39;))
+
+load auto_fly_90.mat;
+
+video_name=&#39;auto_fly_90&#39;;
+
+%使用者設定開始
+
+fuselage_color = [0.9,0.9,0.8];
+propeller_color = [0 0 0];
+data_color = &#39;b&#39;;
+stl_amplification = 0.5;
+
+reference_color = &#39;g&#39;;
+waypoint_color = &#39;r&#39;;
+time_window = 8;%sec
+
+%使用者設定結束
+
+%% 繪製動畫準備
+video=figure();
+set(video,&#39;Position&#39;,[1 49 1.7067e+03 946],&#39;color&#39;,&#39;w&#39;);%需放大錄製，不然畫質很差
+
+subplot(&#39;Position&#39;, [0.06,0.035,0.7,0.95]);
+g_main = gca;
+hold on
+
+%透明球(避免邊界隨螺旋槳變化)
+[bal.x,bal.y,bal.z] = sphere;
+bal.x = bal.x*0.5*stl_amplification;
+bal.y = bal.y*0.5*stl_amplification;
+bal.z = bal.z*0.5*stl_amplification;
+ball = surf(bal.x,bal.y,bal.z,&amp;quot;FaceAlpha&amp;quot;,0,&amp;quot;LineStyle&amp;quot;,&amp;quot;none&amp;quot;);
+
+
+%機架
+F450_raw = stlread(&amp;quot;F450_no_propeller.stl&amp;quot;);
+F450_poinit = stl_amplification*F450_raw.Points;           %取點
+F450_conn = F450_raw.ConnectivityList;   %取三角形
+clear F450_raw;
+F450_triang = triangulation(F450_conn,F450_poinit);
+F450 = trisurf(F450_triang,&#39;facecolor&#39;,fuselage_color,&#39;edgecolor&#39;,&#39;none&#39;);
+hold on
+
+%槳葉
+propeller_raw = stlread(&amp;quot;propeller.stl&amp;quot;);
+propeller_poinit = stl_amplification*propeller_raw.Points;           %取點
+propeller_conn = propeller_raw.ConnectivityList;   %取三角形
+clear propeller_raw;
+propeller_triang = triangulation(propeller_conn,propeller_poinit);
+
+for i=1:4
+    propeller&amp;#123;i&amp;#125; = trisurf(propeller_triang,&#39;facecolor&#39;,propeller_color,&#39;edgecolor&#39;,&#39;none&#39;);
+end
+propeller_RT_B_to_motor = cell(4,1);
+propeller_deg = [pi*0.1;pi*0.2;pi*0.3;pi*0.4];
+
+
+
+%% 開燈
+camlight(&amp;quot;headlight&amp;quot;)
+
+
+%% 文字設定
+digits_set=&#39;%5.2f&#39;;
+
+Time_txt=text(&#39;String&#39;,[&#39;time: &#39;, &#39;00.00&#39; ,&#39; s&#39;],...
+              &#39;Interpreter&#39;,&#39;latex&#39;,...
+              &#39;FontSize&#39;,30,...
+              &#39;Units&#39;,&#39;normalized&#39;,...
+              &#39;Position&#39;,[ 0.05 0.95 0]);
+
+% t = data.t(1:3000);
+t = data.t;
+dt = t(2)-t(1);
+
+%% 初始狀態
+%透明球
+ball.XData = bal.x + data.P(1,1);
+ball.YData = bal.y + data.P(2,1);
+ball.ZData = bal.z + data.P(3,1);
+
+%機架
+F450_dcm = angle2dcm (data.psi(1),data.theta(1),data.phi(1));
+F450_RT = [F450_dcm&#39;,data.P(:,1);[0,0,0,1]];
+F450_F450_poinit_new  = (F450_RT*[F450_poinit&#39;;ones(1,length(F450_poinit))])&#39;;
+F450_F450_poinit_new=F450_F450_poinit_new(:,1:3);
+F450.Vertices = F450_F450_poinit_new;
+
+%槳葉
+propeller_offset&amp;#123;1&amp;#125; = [ 159.1;  159.1; 196.7500]*0.001*stl_amplification;
+propeller_offset&amp;#123;2&amp;#125; = [-159.1;  159.1; 196.7500]*0.001*stl_amplification;
+propeller_offset&amp;#123;3&amp;#125; = [-159.1; -159.1; 196.7500]*0.001*stl_amplification;
+propeller_offset&amp;#123;4&amp;#125; = [ 159.1; -159.1; 196.7500]*0.001*stl_amplification;
+
+
+
+for i=1:4
+    propeller_RT_B_to_motor&amp;#123;i&amp;#125; = [angle2dcm(propeller_deg(i),0,0)&#39; propeller_offset&amp;#123;i&amp;#125;;[0,0,0,1]];
+    propeller_F450_poinit_new  = (F450_RT*propeller_RT_B_to_motor&amp;#123;i&amp;#125;*[propeller_poinit&#39;;ones(1,length(propeller_poinit))])&#39;;
+    propeller_F450_poinit_new=propeller_F450_poinit_new(:,1:3);
+    propeller&amp;#123;i&amp;#125;.Vertices = propeller_F450_poinit_new;
+end
+
+
+%% 全部的軌跡
+data_Trajectory_point=[ones(1,length(t))*data.P(1,1);ones(1,length(t))*data.P(2,1);ones(1,length(t))*data.P(3,1)];
+data_Trajectory=plot3(data_Trajectory_point(1,:),data_Trajectory_point(2,:),data_Trajectory_point(3,:), ...
+    &#39;-o&#39;,&#39;MarkerSize&#39;,5,&#39;MarkerFaceColor&#39;,data_color ...
+    ,&#39;MarkerEdgeColor&#39;,&#39;none&#39;,&amp;quot;LineWidth&amp;quot;,2,&#39;Color&#39;,data_color,&#39;MarkerIndices&#39;,1:10:length(t));
+
+
+
+%% 航點與期望軌跡
+
+hold on
+p(2)=plot3(desired_trajectory.p(1,:),desired_trajectory.p(2,:),desired_trajectory.p(3,:),&#39;-&#39;,&amp;quot;Color&amp;quot;,reference_color,&amp;quot;LineWidth&amp;quot;,1.5);
+hold on
+plot3(desired_trajectory.waypoint(1,1:end),desired_trajectory.waypoint(2,1:end),desired_trajectory.waypoint(3,1:end),&amp;quot;Color&amp;quot;,waypoint_color,&#39;LineStyle&#39;,&#39;-.&#39;,&amp;quot;LineWidth&amp;quot;,1.5);
+hold on
+plot3(desired_trajectory.waypoint(1,1),desired_trajectory.waypoint(2,1),desired_trajectory.waypoint(3,1),&#39;o&#39;,&amp;quot;Color&amp;quot;,reference_color,&#39;LineStyle&#39;,&#39;none&#39;,&amp;quot;LineWidth&amp;quot;,2);
+hold on
+p(1)=plot3(desired_trajectory.waypoint(1,2:end),desired_trajectory.waypoint(2,2:end),desired_trajectory.waypoint(3,2:end),&#39;o&#39;,&amp;quot;Color&amp;quot;,waypoint_color,&#39;LineStyle&#39;,&#39;none&#39;,&amp;quot;LineWidth&amp;quot;,2);
+
+legend([p data_Trajectory],&#39;Waypoint&#39;,&#39;Desired trajectory&#39;,&#39;Cascade PID&#39;,&#39;Location&#39;,[0.5955 0.9003 0.1107 0.0751])
+
+xlabel(&amp;quot;X(m)&amp;quot;);
+ylabel(&amp;quot;Y(m)&amp;quot;);
+zlabel(&amp;quot;Z(m)&amp;quot;);
+
+
+% axis equal;
+axis padded
+grid on;
+view(3)
+plot_set(16);
+
+
+writerObj = VideoWriter(video_name,&#39;MPEG-4&#39;);
+writerObj.FrameRate = 25;
+writerObj.Quality = 100;
+open(writerObj);
+n = length(t);
+
+
+%% 其他子圖
+RAD2DEG = 180/pi; 
+p_y = [data.x;
+       data.y;
+       data.z;
+       RAD2DEG*data.phi;
+       RAD2DEG*data.theta;
+       RAD2DEG*data.psi];
+
+subplot(&amp;quot;Position&amp;quot;,[0.78 0.82 0.2 0.13]);
+p(1) = plot(t,p_y(1,:),&amp;quot;Color&amp;quot;,data_color,&amp;quot;LineStyle&amp;quot;,&amp;quot;-&amp;quot;);
+hold on
+plot(t,desired_trajectory.p(1,:),&amp;quot;LineStyle&amp;quot;,&amp;quot;--&amp;quot;,&amp;quot;Color&amp;quot;,reference_color);
+set(gca,&#39;xticklabel&#39;,[])
+g(1) = gca;
+ylabel(&amp;quot;$x$ (m)&amp;quot;,&amp;quot;Interpreter&amp;quot;,&amp;quot;latex&amp;quot;);
+plot_set(16,2);
+
+subplot(&amp;quot;Position&amp;quot;,[0.78 0.67 0.2 0.13]);
+p(2) = plot(t,p_y(2,:),&amp;quot;Color&amp;quot;,data_color,&amp;quot;LineStyle&amp;quot;,&amp;quot;-&amp;quot;);
+hold on
+plot(t,desired_trajectory.p(2,:),&amp;quot;LineStyle&amp;quot;,&amp;quot;--&amp;quot;,&amp;quot;Color&amp;quot;,reference_color);
+set(gca,&#39;xticklabel&#39;,[])
+g(2) = gca;
+ylabel(&amp;quot;$y$ (m)&amp;quot;,&amp;quot;Interpreter&amp;quot;,&amp;quot;latex&amp;quot;);
+plot_set(16,2);
+
+subplot(&amp;quot;Position&amp;quot;,[0.78 0.52 0.2 0.13]);
+p(3) = plot(t,p_y(3,:),&amp;quot;Color&amp;quot;,data_color,&amp;quot;LineStyle&amp;quot;,&amp;quot;-&amp;quot;);
+hold on
+plot(t,desired_trajectory.p(3,:),&amp;quot;LineStyle&amp;quot;,&amp;quot;--&amp;quot;,&amp;quot;Color&amp;quot;,reference_color);
+set(gca,&#39;xticklabel&#39;,[])
+g(3) = gca;
+ylabel(&amp;quot;$z$ (m)&amp;quot;,&amp;quot;Interpreter&amp;quot;,&amp;quot;latex&amp;quot;);
+plot_set(16,2);
+
+subplot(&amp;quot;Position&amp;quot;,[0.78 0.37 0.2 0.13]);
+p(4) = plot(t,p_y(4,:),&#39;Color&#39;,data_color,&amp;quot;LineStyle&amp;quot;,&amp;quot;-&amp;quot;);
+set(gca,&#39;xticklabel&#39;,[])
+g(4) = gca;
+ylabel(&amp;quot;$\phi$ ($^&amp;#123;\circ&amp;#125;$)&amp;quot;,&amp;quot;Interpreter&amp;quot;,&amp;quot;latex&amp;quot;);
+plot_set(16,2);
+
+subplot(&amp;quot;Position&amp;quot;,[0.78 0.22 0.2 0.13]);
+p(5) = plot(t,p_y(5,:),&#39;Color&#39;,data_color,&amp;quot;LineStyle&amp;quot;,&amp;quot;-&amp;quot;);
+set(gca,&#39;xticklabel&#39;,[])
+g(5) = gca;
+ylabel(&amp;quot;$\theta$ ($^&amp;#123;\circ&amp;#125;$)&amp;quot;,&amp;quot;Interpreter&amp;quot;,&amp;quot;latex&amp;quot;);
+plot_set(16,2);
+
+subplot(&amp;quot;Position&amp;quot;,[0.78 0.07 0.2 0.13]);
+p(6) = plot(t,p_y(6,:),&#39;Color&#39;,data_color,&amp;quot;LineStyle&amp;quot;,&amp;quot;-&amp;quot;);
+hold on
+plot(t,RAD2DEG*desired_trajectory.psi_d(1,:),&amp;quot;LineStyle&amp;quot;,&amp;quot;--&amp;quot;,&amp;quot;Color&amp;quot;,reference_color);
+ylabel(&amp;quot;$\psi$ ($^&amp;#123;\circ&amp;#125;$)&amp;quot;,&amp;quot;Interpreter&amp;quot;,&amp;quot;latex&amp;quot;);
+xlabel(&amp;quot;Time (s)&amp;quot;,&amp;quot;Interpreter&amp;quot;,&amp;quot;latex&amp;quot;);
+g(6) = gca;
+plot_set(16,2);
+
+
+for j=1:6
+    time = t(1);
+    p(j).XData = time;
+    p(j).YData = p_y(j,1);
+    min_p_y = min(p_y(j,1:4));
+    max_p_y = max(p_y(j,1:4));
+    lim_y_offset = 10;
+    if abs(max_p_y-min_p_y)&amp;gt;lim_y_offset
+        lim_y_offset = abs(max_p_y-min_p_y);
+    end
+    g(j).YLim=[min_p_y-0.05*lim_y_offset max_p_y+0.05*lim_y_offset];
+
+    if (time &amp;lt; 0.7*time_window)
+        g(j).XLim=[0 time_window];
+    else
+        g(j).XLim=[time-0.7*time_window time+0.3*time_window];
+    end
+end
+%% 繪製動畫準備結束
+
+%% 起始前暫停影像
+for i=1:25
+     writeVideo(writerObj,getframe(video));
+end
+%%%
+
+%% 開始錄製
+for i = 1:n/4
+ii=4*i;
+%透明球
+ball.XData = bal.x + data.P(1,ii);
+ball.YData = bal.y + data.P(2,ii);
+ball.ZData = bal.z + data.P(3,ii);
+
+%機架
+F450_dcm = angle2dcm (data.psi(ii),data.theta(ii),data.phi(ii));
+F450_RT = [F450_dcm&#39;,data.P(:,ii);[0,0,0,1]];
+F450_F450_poinit_new  = (F450_RT*[F450_poinit&#39;;ones(1,length(F450_poinit))])&#39;;
+F450_F450_poinit_new=F450_F450_poinit_new(:,1:3);
+F450.Vertices = F450_F450_poinit_new;
+
+%槳葉
+
+for j=1:4
+    propeller_deg(j) = propeller_deg(j) + (-1)^(j)*0.3*pi;
+    propeller_RT_B_to_motor&amp;#123;j&amp;#125; = [angle2dcm(propeller_deg(j),0,0)&#39; propeller_offset&amp;#123;j&amp;#125;;[0,0,0,1]];
+    propeller_F450_poinit_new  = (F450_RT*propeller_RT_B_to_motor&amp;#123;j&amp;#125;*[propeller_poinit&#39;;ones(1,length(propeller_poinit))])&#39;;
+    propeller_F450_poinit_new=propeller_F450_poinit_new(:,1:3);
+    propeller&amp;#123;j&amp;#125;.Vertices = propeller_F450_poinit_new;
+end
+
+data_Trajectory.XData(1,i:end)=data.P(1,ii);
+data_Trajectory.YData(1,i:end)=data.P(2,ii);
+data_Trajectory.ZData(1,i:end)=data.P(3,ii);
+
+% 子圖更新
+time = t(ii);
+for j=1:6
+    
+    if (time &amp;lt; 0.7*time_window)
+        p(j).XData = t(1:ii);
+        p(j).YData = p_y(j,1:ii);
+        min_p_y = min(p_y(j,1:ii));
+        max_p_y = max(p_y(j,1:ii));
+        lim_y_offset = 10;
+        if abs(max_p_y-min_p_y)&amp;gt;lim_y_offset
+            lim_y_offset = abs(max_p_y-min_p_y);
+        end
+        g(j).YLim=[min_p_y-0.05*lim_y_offset max_p_y+0.05*lim_y_offset];
+        g(j).XLim=[0 time_window];
+    else 
+        p(j).XData = t(1:ii);
+        p(j).YData = p_y(j,1:ii);
+        min_p_y = min(p_y(j,ceil(ii-0.7*time_window/dt):ii));
+        max_p_y = max(p_y(j,ceil(ii-0.7*time_window/dt):ii));
+        lim_y_offset = 10;
+        if abs(max_p_y-min_p_y)&amp;gt;lim_y_offset
+            lim_y_offset = abs(max_p_y-min_p_y);
+        end
+        g(j).YLim=[min_p_y-0.05*lim_y_offset max_p_y+0.05*lim_y_offset];
+        if time+0.3*time_window &amp;lt; t(end)
+            g(j).XLim=[time-0.7*time_window time+0.3*time_window];
+        else
+            g(j).XLim=[t(end)-time_window t(end)];
+        end
+    end
+end
+
+%%字體
+Time_txt.String=[&#39;time: &#39;, num2str(t(ii),&#39;%5.2f&#39;) ,&#39; s&#39;];
+
+
+drawnow limitrate;
+writeVideo(writerObj,getframe(video));
+end
+
+%% 最後暫停畫面
+ii=length(t);
+%透明球
+ball.XData = bal.x + data.P(1,ii);
+ball.YData = bal.y + data.P(2,ii);
+ball.ZData = bal.z + data.P(3,ii);
+
+%機架
+F450_dcm = angle2dcm (data.psi(ii),data.theta(ii),data.phi(ii));
+F450_RT = [F450_dcm&#39;,data.P(:,ii);[0,0,0,1]];
+F450_F450_poinit_new  = (F450_RT*[F450_poinit&#39;;ones(1,length(F450_poinit))])&#39;;
+F450_F450_poinit_new=F450_F450_poinit_new(:,1:3);
+F450.Vertices = F450_F450_poinit_new;
+
+%槳葉
+for j=1:4
+    propeller_deg(j) = propeller_deg(j) + (-1)^(j)*0.3*pi;
+    propeller_RT_B_to_motor&amp;#123;j&amp;#125; = [angle2dcm(propeller_deg(j),0,0)&#39; propeller_offset&amp;#123;j&amp;#125;;[0,0,0,1]];
+    propeller_F450_poinit_new  = (F450_RT*propeller_RT_B_to_motor&amp;#123;j&amp;#125;*[propeller_poinit&#39;;ones(1,length(propeller_poinit))])&#39;;
+    propeller_F450_poinit_new=propeller_F450_poinit_new(:,1:3);
+    propeller&amp;#123;j&amp;#125;.Vertices = propeller_F450_poinit_new;
+end
+
+%%字體
+Time_txt.String=[&#39;time: &#39;, num2str(t(ii),&#39;%5.2f&#39;) ,&#39; s&#39;];
+drawnow limitrate;
+writeVideo(writerObj,getframe(video));
+for i=1:25%結束暫停影像
+    writeVideo(writerObj,getframe(video));
+end
+%%%
+close(writerObj);
+
+function new_data=col_row_check(data)
+   new_data=data;
+   [m,n]=size(data);
+   if(m&amp;gt;n)
+     new_data = new_data&#39;;
+   end
+end
+&lt;/code&gt;&lt;/pre&gt;
+ ]]></description>
+        </item>
+        <item>
+            <guid isPermalink="true">https://to-pro.github.io/matlab/lesson3/</guid>
+            <title>動畫 lesson 3</title>
+            <link>https://to-pro.github.io/matlab/lesson3/</link>
+            <pubDate>Wed, 23 Oct 2024 17:49:19 +0800</pubDate>
+            <description><![CDATA[ &lt;p&gt;這一篇基於前一篇引入 STL 後，將四旋翼模型拆分成機架與槳葉。這樣拆分引入可以在後面繪製動畫時使螺旋槳各自轉動。&lt;/p&gt;
+&lt;h3 id=&#34;成果展示&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#成果展示&#34;&gt;#&lt;/a&gt; 成果展示:&lt;/h3&gt;
+&lt;p&gt;&lt;img data-src=&#34;lesson3.png&#34; alt=&#34;alt text&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;範例的 STL 可以在這邊下載:&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9kcml2ZS5nb29nbGUuY29tL2RyaXZlL2ZvbGRlcnMvMUxBbUlWNzFuUTRtaHVQUWxnWm5PNDVGZjBKUEN2Z3Z3P3VzcD1kcml2ZV9saW5r&#34;&gt; 載點&lt;/span&gt;&lt;/p&gt;
+&lt;h3 id=&#34;程式碼&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#程式碼&#34;&gt;#&lt;/a&gt; 程式碼:&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-MATLAB&#34;&gt;clc;clear;close all
+addpath(genpath(&#39;.\450&#39;))%路徑可能需要更改
+
+%機架
+F450_raw = stlread(&amp;quot;F450_no_propeller.stl&amp;quot;);
+F450_poinit = F450_raw.Points;           %取點
+F450_conn = F450_raw.ConnectivityList;   %取三角形
+clear F450_raw;
+F450_triang = triangulation(F450_conn,F450_poinit);
+F450 = trisurf(F450_triang,&#39;facecolor&#39;,[0.9,0.9,0.8],&#39;edgecolor&#39;,&#39;none&#39;);
+hold on
+
+
+%槳葉
+propeller_raw = stlread(&amp;quot;propeller.stl&amp;quot;);
+propeller_poinit = propeller_raw.Points;           %取點
+propeller_conn = propeller_raw.ConnectivityList;   %取三角形
+clear propeller_raw;
+propeller_triang = triangulation(propeller_conn,propeller_poinit);
+
+for i=1:4
+    propeller&amp;#123;i&amp;#125; = trisurf(propeller_triang,&#39;facecolor&#39;,[0 0 0],&#39;edgecolor&#39;,&#39;none&#39;);
+end
+
+
+propeller_RT_B_to_motor = cell(4,1);
+propeller_RT_B_to_motor&amp;#123;1&amp;#125; = [angle2dcm(pi*0.1,0,0)&#39; [ 159.1;  159.1; 196.7500]*0.001;[0,0,0,1]];
+propeller_RT_B_to_motor&amp;#123;2&amp;#125; = [angle2dcm(pi*0.2,0,0)&#39; [-159.1;  159.1; 196.7500]*0.001;[0,0,0,1]];
+propeller_RT_B_to_motor&amp;#123;3&amp;#125; = [angle2dcm(pi*0.3,0,0)&#39; [-159.1; -159.1; 196.7500]*0.001;[0,0,0,1]];
+propeller_RT_B_to_motor&amp;#123;4&amp;#125; = [angle2dcm(pi*0.4,0,0)&#39; [ 159.1; -159.1; 196.7500]*0.001;[0,0,0,1]];
+
+for i=1:4
+propeller_poinit_new  = (propeller_RT_B_to_motor&amp;#123;i&amp;#125;*[propeller_poinit&#39;;ones(1,length(propeller_poinit))])&#39;;
+propeller_poinit_new=propeller_poinit_new(:,1:3);
+propeller&amp;#123;i&amp;#125;.Vertices = propeller_poinit_new;
+end
+axis equal
+
+% axis vis3d
+box on 
+camlight(&amp;quot;headlight&amp;quot;)%打光
+xlabel(&amp;quot;x&amp;quot;)
+ylabel(&amp;quot;y&amp;quot;)
+zlabel(&amp;quot;z&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+ ]]></description>
+        </item>
+        <item>
+            <guid isPermalink="true">https://to-pro.github.io/matlab/lesson2/</guid>
+            <title>動畫 lesson 2</title>
+            <link>https://to-pro.github.io/matlab/lesson2/</link>
+            <pubDate>Wed, 23 Oct 2024 17:49:18 +0800</pubDate>
+            <description><![CDATA[ &lt;p&gt;這一篇將介紹如何在 MATLAB 中的 Figure 中引入 STL 檔案。&lt;/p&gt;
+&lt;p&gt;首先了解 STL 是甚麼可以參考:&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cuYWRvYmUuY29tL3R3L2NyZWF0aXZlY2xvdWQvZmlsZS10eXBlcy9pbWFnZS92ZWN0b3Ivc3RsLWZpbGUuaHRtbA==&#34;&gt; 了解 STL 檔案格式&lt;/span&gt;。不論是從網路或是使用 Solid work 自己繪製。都可以獲得 STL 檔案的模型。檔案中主要內容是點跟向量。向量表示那些點組成三角形表面。這裡特別建議 STL 檔案中的原點最好在使用前先用程式設定好，用 MATLAB 內建的可以調整與儲存但麻煩許多也不直觀。&lt;/p&gt;
+&lt;h3 id=&#34;成果展示&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#成果展示&#34;&gt;#&lt;/a&gt; 成果展示:&lt;/h3&gt;
+&lt;p&gt;&lt;img data-src=&#34;lesson2.png&#34; alt=&#34;alt text&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;範例的 STL 可以在這邊下載:&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9kcml2ZS5nb29nbGUuY29tL2RyaXZlL2ZvbGRlcnMvMUxBbUlWNzFuUTRtaHVQUWxnWm5PNDVGZjBKUEN2Z3Z3P3VzcD1kcml2ZV9saW5r&#34;&gt; 載點&lt;/span&gt;&lt;/p&gt;
+&lt;h3 id=&#34;程式碼&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#程式碼&#34;&gt;#&lt;/a&gt; 程式碼:&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-MATLAB&#34;&gt;% plot stl and animation example 
+clc;clear;close all
+addpath(genpath(&#39;.\STL\250&#39;))%路徑需要更改
+% addpath說明
+% 1、文件在当前路径下：使用 load(&#39;***.mat&#39;)
+% 2、文件在下一级路径下：使用 load (&#39; .\下一级路径的文件名\***.mat &#39;);
+% 3、文件在上一级路径下：使用 load (&#39; ..\***.mat &#39;);
+% 4、文件在平行文件夹内：使用 load (&#39; ..\平行的文件夹\***.mat&#39;);
+
+%%
+Drone_raw = stlread(&amp;quot;250.STL&amp;quot;);
+Drone_poinit = Drone_raw.Points;         %取點
+Drone_conn = Drone_raw.ConnectivityList; %取三角形資料
+point_x= mean(Drone_poinit(:,1),1);      %置中(但原點最好前處理解決掉，例如在SW中轉STL時就設定好重心位置)
+Drone_poinit(:,1) = Drone_poinit(:,1)-point_x;
+Drone_triang = triangulation(Drone_conn,Drone_poinit);%stlwrite(F_16_new,&amp;quot;F_16_new.stl&amp;quot;)
+Drone = trisurf(Drone_triang,&#39;facecolor&#39;,[0.9,0.9,0.8],&#39;edgecolor&#39;,&#39;none&#39;);
+
+% axis equal
+axis vis3d
+
+box on 
+camlight(&amp;quot;headlight&amp;quot;)%打光
+xlabel(&amp;quot;x&amp;quot;)
+ylabel(&amp;quot;y&amp;quot;)
+zlabel(&amp;quot;z&amp;quot;)
+
+%% rotate
+Drone_poinit_new = Drone_poinit;
+
+for i = 0:0.5:360
+    Drone_position = [0;0;i/360/2]; %高度升到0.5米
+    Drone_dcm = angle2dcm (0,0,i/360*2*pi); %內建的DCM會與推導的差一個轉置
+    Drone_RT = [Drone_dcm&#39; Drone_position;[0 0 0 1]];
+    Drone_poinit_new  = (Drone_RT*[Drone_poinit&#39;;ones(1,length(Drone_poinit))])&#39;;
+    Drone.Vertices = Drone_poinit_new(:,1:3);
+    zlim([0,inf]);
+    drawnow limitrate
+end
+&lt;/code&gt;&lt;/pre&gt;
+ ]]></description>
+        </item>
+        <item>
+            <guid isPermalink="true">https://to-pro.github.io/matlab/lesson1/</guid>
+            <title>動畫 lesson 1</title>
+            <link>https://to-pro.github.io/matlab/lesson1/</link>
+            <pubDate>Wed, 23 Oct 2024 17:49:14 +0800</pubDate>
+            <description><![CDATA[ &lt;p&gt;本篇以一個簡單的例子說明如何用 MATLAB 函數。繪製目標為將函數 &lt;span class=&#34;katex&#34;&gt;&lt;span class=&#34;katex-mathml&#34;&gt;&lt;math xmlns=&#34;http://www.w3.org/1998/Math/MathML&#34;&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi&gt;s&lt;/mi&gt;&lt;mi&gt;i&lt;/mi&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;mo stretchy=&#34;false&#34;&gt;(&lt;/mo&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;mi&gt;t&lt;/mi&gt;&lt;mo stretchy=&#34;false&#34;&gt;)&lt;/mo&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;sin(2t)&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&#34;katex-html&#34; aria-hidden=&#34;true&#34;&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:1em;vertical-align:-0.25em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34;&gt;s&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34;&gt;n&lt;/span&gt;&lt;span class=&#34;mopen&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mord&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34;&gt;t&lt;/span&gt;&lt;span class=&#34;mclose&#34;&gt;)&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; 以動畫形式展現。&lt;/p&gt;
+&lt;h3 id=&#34;主要函數介紹&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#主要函數介紹&#34;&gt;#&lt;/a&gt; 主要函數介紹:&lt;/h3&gt;
+&lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cubWF0aHdvcmtzLmNvbS9oZWxwL21hdGxhYi9yZWYvdmlkZW93cml0ZXIuaHRtbA==&#34;&gt;VideoWriter&lt;/span&gt;: 建立視訊物件。主要要設定 Quality 和 FrameRate。Quality 是質量基本上設定上限 100。FrameRate 則是幀數，每秒幾張圖須配合寫入做調整。&lt;/p&gt;
+&lt;p&gt;簡單舉例:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-MATLAB&#34;&gt;writerObj = VideoWriter(video_name,&#39;MPEG-4&#39;);
+writerObj.FrameRate = 25; %每秒幾張圖
+writerObj.Quality = 100;
+open(writerObj);
+
+% 開始錄製(用迴圈)
+for i=1:n
+%
+% 更新畫面....
+%
+drawnow limitrate;% 立即繪製
+writeVideo(writerObj,getframe(video));
+end
+
+% 結束錄製
+close(writerObj);%一定要關閉才能錄製成功
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;成果展示&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#成果展示&#34;&gt;#&lt;/a&gt; 成果展示:&lt;/h3&gt;
+&lt;p&gt;前後暫停 1 秒。並且時間窗格設定為 5 秒，會跟著當前時間顯示函數。&lt;br /&gt;
+&lt;img data-src=&#34;lesson1.png&#34; alt=&#34;alt text&#34; /&gt;&lt;/p&gt;
+&lt;h3 id=&#34;程式碼&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#程式碼&#34;&gt;#&lt;/a&gt; 程式碼:&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-MATLAB&#34;&gt;clc;clear;close all;
+
+%% 生成資料
+dt = 0.01;
+t_end = 10;
+t = 0:dt:t_end;
+y = sin(2*t);
+video_name = &#39;sin wave&#39;;
+time_window = 5;%Unit:sec
+
+%% 繪圖
+video=figure();
+set(video,&#39;Position&#39;,[1 49 1.7067e+03 946]); %需放大錄製，不然畫質很差
+p1 = plot(t,y(1,:),&amp;quot;Color&amp;quot;,&amp;quot;b&amp;quot;,&amp;quot;LineStyle&amp;quot;,&amp;quot;-&amp;quot;,&amp;quot;LineWidth&amp;quot;,2);
+hold on
+circle = plot(0,y(1),&amp;quot;Color&amp;quot;,&amp;quot;r&amp;quot;,&amp;quot;LineStyle&amp;quot;,&amp;quot;none&amp;quot;,&amp;quot;Marker&amp;quot;,&amp;quot;o&amp;quot;,&amp;quot;MarkerSize&amp;quot;,10,&amp;quot;LineWidth&amp;quot;,2);
+xlim tight
+ylim padded
+ylabel(&amp;quot;$\sin (2t)$&amp;quot;,&amp;quot;Interpreter&amp;quot;,&amp;quot;latex&amp;quot;);
+xlabel(&amp;quot;Time (s)&amp;quot;,&amp;quot;Interpreter&amp;quot;,&amp;quot;latex&amp;quot;);
+grid on %打開網格 
+g1 = gca;
+g1.FontSize = 20;
+
+% 顯示時間
+Time_txt=text(&#39;String&#39;,[&#39;time: &#39;, &#39;00.00&#39; ,&#39; s&#39;],...
+              &#39;Interpreter&#39;,&#39;latex&#39;,...
+              &#39;FontSize&#39;,30,...
+              &#39;Units&#39;,&#39;normalized&#39;,...
+              &#39;Position&#39;,[ 0.8 1.04]);
+
+%% 錄影設定
+writerObj = VideoWriter(video_name,&#39;MPEG-4&#39;);
+writerObj.FrameRate = 25; %每秒幾張圖(如要顯示時間要注意這個設定)
+writerObj.Quality = 100;
+open(writerObj);
+
+%% 起始前暫停影像
+p1.XData = t(1:1);
+p1.YData = y(1,1);
+
+circle.XData = t(1);
+p1.YData = y(1,1);
+
+min_y = min(y(1:1));
+max_y = max(y(1:1));
+lim_y_offset = 5;
+if abs(max_y-min_y)&amp;gt;lim_y_offset
+    lim_y_offset = abs(max_y-min_y);
+end
+g1.YLim=[min_y-0.05*lim_y_offset max_y+0.05*lim_y_offset];
+g1.XLim=[0 time_window];
+
+for i=1:25 %暫停一秒 
+     writeVideo(writerObj,getframe(video));
+end
+
+
+%% 開始錄製
+for i = 1:length(t)/4
+ii = 4*i;
+
+time = t(ii);
+p1.XData = t(1:ii);
+p1.YData = y(1,1:ii);
+
+circle.XData = t(ii);
+circle.YData = y(1,ii);
+
+
+% 檢測顯示線的Y方向最大刻度
+min_y = min(y(1:ii));
+max_y = max(y(1:ii));
+lim_y_offset = 10; % 設定最小Y軸長度
+if abs(max_y-min_y)&amp;gt;lim_y_offset
+    lim_y_offset = abs(max_y-min_y);
+end
+g1.YLim=[min_y-0.05*lim_y_offset max_y+0.05*lim_y_offset];% 設定Y軸
+
+% 設定X軸
+if (time &amp;lt; 0.7*time_window)
+    g1.XLim=[0 time_window];
+else
+    g1.XLim=[time-0.7*time_window time+0.3*time_window];
+end
+
+% 文字更新
+Time_txt.String=[&#39;time: &#39;, num2str(t(ii),&#39;%5.2f&#39;) ,&#39; s&#39;];
+
+drawnow limitrate;% 立即繪製
+writeVideo(writerObj,getframe(video));
+end
+
+%% 最後暫停畫面(主要是讓時間可以顯示整數)
+% 子圖更新
+ii = length(t);
+time = t(ii);
+p1.XData = t(1:ii);
+p1.YData = y(1,1:ii);
+
+circle.XData = t(ii);
+circle.YData = y(1,ii);
+
+
+% 檢測顯示線的Y方向最大刻度
+min_y = min(y(1:ii));
+max_y = max(y(1:ii));
+lim_y_offset = 10; % 設定最小Y軸長度
+if abs(max_y-min_y)&amp;gt;lim_y_offset
+    lim_y_offset = abs(max_y-min_y);
+end
+g1.YLim=[min_y-0.05*lim_y_offset max_y+0.05*lim_y_offset];% 設定Y軸
+
+% 設定X軸
+if (time &amp;lt; 0.7*time_window)
+    g1.XLim=[0 time_window];
+else
+    g1.XLim=[time-0.7*time_window time+0.3*time_window];
+end
+
+% 文字更新
+Time_txt.String=[&#39;time: &#39;, num2str(t(ii),&#39;%5.2f&#39;) ,&#39; s&#39;];
+for i=1:25 %結束暫停影像(一秒)
+    writeVideo(writerObj,getframe(video));
+end
+close(writerObj);%一定要關閉才能錄製成功
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;回家作業&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#回家作業&#34;&gt;#&lt;/a&gt; 回家作業&lt;/h3&gt;
+&lt;p&gt;配合前一份旋轉方塊的程式碼，可以用它展示姿態變化。&lt;/p&gt;
+ ]]></description>
+        </item>
         <item>
             <guid isPermalink="true">https://to-pro.github.io/matlab/note_part2/</guid>
             <title>Matlab figure 筆記2</title>
