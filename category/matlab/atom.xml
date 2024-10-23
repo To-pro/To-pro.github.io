@@ -702,9 +702,9 @@ axis([-1.5 2.2 -1.5 2.2 -1.5 2.2]);
 
 n = 7;
 for i = 1:n
-dcm = angle2dcm (pi/4*(i-1),0,0);%旋轉餘弦矩陣
+dcm = angle2dcm (pi/4*(i-1),0,0);% 旋轉餘弦矩陣(與筆者常用的差一個轉置)
 
-cube.Vertices = vertices*dcm;
+cube.Vertices = vertices*dcm&#39;;
 Vx=dcm&#39;*Vx_ini;
 Vy=dcm&#39;*Vy_ini;
 Vz=dcm&#39;*Vz_ini;
