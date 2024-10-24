@@ -39,7 +39,7 @@
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&#34;成果展示&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#成果展示&#34;&gt;#&lt;/a&gt; 成果展示:&lt;/h3&gt;
-&lt;p&gt;&lt;img data-src=&#34;lesson4.png&#34; alt=&#34;alt text&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://imgur.com/8TjEUiE.jpg&#34; alt=&#34;Imgur&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;範例的 STL 與 MAT 可以在這邊下載:&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9kcml2ZS5nb29nbGUuY29tL2RyaXZlL2ZvbGRlcnMvMUxBbUlWNzFuUTRtaHVQUWxnWm5PNDVGZjBKUEN2Z3Z3P3VzcD1kcml2ZV9saW5r&#34;&gt; 載點&lt;/span&gt;&lt;/p&gt;
 &lt;h3 id=&#34;程式碼&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#程式碼&#34;&gt;#&lt;/a&gt; 程式碼:&lt;/h3&gt;
 &lt;pre&gt;&lt;code class=&#34;language-MATLAB&#34;&gt;%全地圖畫法
@@ -397,7 +397,7 @@ end
             <pubDate>Wed, 23 Oct 2024 17:49:19 +0800</pubDate>
             <description><![CDATA[ &lt;p&gt;這一篇基於前一篇引入 STL 後，將四旋翼模型拆分成機架與槳葉。這樣拆分引入可以在後面繪製動畫時使螺旋槳各自轉動。&lt;/p&gt;
 &lt;h3 id=&#34;成果展示&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#成果展示&#34;&gt;#&lt;/a&gt; 成果展示:&lt;/h3&gt;
-&lt;p&gt;&lt;img data-src=&#34;lesson3.png&#34; alt=&#34;alt text&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://imgur.com/dGp7Pfz.jpg&#34; alt=&#34;Imgur&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;範例的 STL 可以在這邊下載:&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9kcml2ZS5nb29nbGUuY29tL2RyaXZlL2ZvbGRlcnMvMUxBbUlWNzFuUTRtaHVQUWxnWm5PNDVGZjBKUEN2Z3Z3P3VzcD1kcml2ZV9saW5r&#34;&gt; 載點&lt;/span&gt;&lt;/p&gt;
 &lt;h3 id=&#34;程式碼&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#程式碼&#34;&gt;#&lt;/a&gt; 程式碼:&lt;/h3&gt;
 &lt;pre&gt;&lt;code class=&#34;language-MATLAB&#34;&gt;clc;clear;close all
@@ -455,7 +455,7 @@ zlabel(&amp;quot;z&amp;quot;)
             <description><![CDATA[ &lt;p&gt;這一篇將介紹如何在 MATLAB 中的 Figure 中引入 STL 檔案。&lt;/p&gt;
 &lt;p&gt;首先了解 STL 是甚麼可以參考:&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cuYWRvYmUuY29tL3R3L2NyZWF0aXZlY2xvdWQvZmlsZS10eXBlcy9pbWFnZS92ZWN0b3Ivc3RsLWZpbGUuaHRtbA==&#34;&gt; 了解 STL 檔案格式&lt;/span&gt;。不論是從網路或是使用 Solid work 自己繪製。都可以獲得 STL 檔案的模型。檔案中主要內容是點跟向量。向量表示那些點組成三角形表面。這裡特別建議 STL 檔案中的原點最好在使用前先用程式設定好，用 MATLAB 內建的可以調整與儲存但麻煩許多也不直觀。&lt;/p&gt;
 &lt;h3 id=&#34;成果展示&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#成果展示&#34;&gt;#&lt;/a&gt; 成果展示:&lt;/h3&gt;
-&lt;p&gt;&lt;img data-src=&#34;lesson2.png&#34; alt=&#34;alt text&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://imgur.com/1stcyjR.jpg&#34; alt=&#34;Imgur&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;範例的 STL 可以在這邊下載:&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9kcml2ZS5nb29nbGUuY29tL2RyaXZlL2ZvbGRlcnMvMUxBbUlWNzFuUTRtaHVQUWxnWm5PNDVGZjBKUEN2Z3Z3P3VzcD1kcml2ZV9saW5r&#34;&gt; 載點&lt;/span&gt;&lt;/p&gt;
 &lt;h3 id=&#34;程式碼&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#程式碼&#34;&gt;#&lt;/a&gt; 程式碼:&lt;/h3&gt;
 &lt;pre&gt;&lt;code class=&#34;language-MATLAB&#34;&gt;% plot stl and animation example 
@@ -528,7 +528,7 @@ close(writerObj);%一定要關閉才能錄製成功
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h3 id=&#34;成果展示&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#成果展示&#34;&gt;#&lt;/a&gt; 成果展示:&lt;/h3&gt;
 &lt;p&gt;前後暫停 1 秒。並且時間窗格設定為 5 秒，會跟著當前時間顯示函數。&lt;br /&gt;
-&lt;img data-src=&#34;lesson1.png&#34; alt=&#34;alt text&#34; /&gt;&lt;/p&gt;
+&lt;img data-src=&#34;https://imgur.com/rRLsQDx.jpg&#34; alt=&#34;Imgur&#34; /&gt;&lt;/p&gt;
 &lt;h3 id=&#34;程式碼&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#程式碼&#34;&gt;#&lt;/a&gt; 程式碼:&lt;/h3&gt;
 &lt;pre&gt;&lt;code class=&#34;language-MATLAB&#34;&gt;clc;clear;close all;
 
