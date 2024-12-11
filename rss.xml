@@ -5,8 +5,78 @@
         <link>https://to-pro.github.io</link>
         <description></description>
         <language>zh-TW</language>
-        <pubDate>Thu, 28 Nov 2024 17:02:36 +0800</pubDate>
-        <lastBuildDate>Thu, 28 Nov 2024 17:02:36 +0800</lastBuildDate>
+        <pubDate>Wed, 11 Dec 2024 11:13:58 +0800</pubDate>
+        <lastBuildDate>Wed, 11 Dec 2024 11:13:58 +0800</lastBuildDate>
+        <item>
+            <guid isPermalink="true">https://to-pro.github.io/tool/zotero/</guid>
+            <title>Zotero</title>
+            <link>https://to-pro.github.io/tool/zotero/</link>
+            <pubDate>Wed, 11 Dec 2024 11:13:58 +0800</pubDate>
+            <description><![CDATA[ &lt;h1 id=&#34;zotero&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#zotero&#34;&gt;#&lt;/a&gt; &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cuem90ZXJvLm9yZy8=&#34;&gt;Zotero&lt;/span&gt;&lt;/h1&gt;
+&lt;p&gt;Zotero 是一款自由及開放原始碼的文獻管理軟體，用以管理書目資訊（如作者、標題、出版社、摘要、閱讀筆記等）及相關材料（如 PDF 檔案）。其最著名的特性是作為瀏覽器外掛程式、線上同步、與文件編輯軟體如 Microsoft Word、LibreOffice、&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cDovL09wZW5PZmZpY2Uub3Jn&#34;&gt;OpenOffice.org&lt;/span&gt; Writer、NeoOffice 等整合，可生成文內參照（英語：citation）、生成頁面註腳或文後的參考文獻（bibliographies）。(此段介紹來源於 wiki)&lt;/p&gt;
+&lt;p&gt;網上已有許多教學資料:&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly96aHVhbmxhbi56aGlodS5jb20vcC8zOTU5OTA4NDU=&#34;&gt;ZOTERO+TeraCloud 跨平台文献管理教程&lt;/span&gt;&lt;/p&gt;
+&lt;h1 id=&#34;teracloud&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#teracloud&#34;&gt;#&lt;/a&gt; TeraCloud&lt;/h1&gt;
+&lt;p&gt;選擇 TeraCloud 有兩點重要原因，第一是支持 WebDav，第二提供 10GB (+7 好友碼) 免費存儲空間。使各設備上的文獻可以同步。&lt;/p&gt;
+&lt;h1 id=&#34;安裝插件&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#安裝插件&#34;&gt;#&lt;/a&gt; 安裝插件&lt;/h1&gt;
+&lt;p&gt;主要有三種插件 zotfile (&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9ibG9nLjUxY3RvLmNvbS91XzE1MTI3Njc0LzQ1NjQyMTI=&#34;&gt;參考&lt;/span&gt;)、Zotero Connector 和 Better BibTex&lt;/p&gt;
+&lt;h3 id=&#34;zotfile&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#zotfile&#34;&gt;#&lt;/a&gt; zotfile&lt;/h3&gt;
+&lt;p&gt;插件是用於將 zotero 中文獻附件轉移至網絡同步盤中的一種插件，可以解決官方同步空間小的問題。&lt;/p&gt;
+&lt;h3 id=&#34;zotero-connector&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#zotero-connector&#34;&gt;#&lt;/a&gt; Zotero Connector&lt;/h3&gt;
+&lt;p&gt;可以將網頁查到的東東快速加進書庫中&lt;/p&gt;
+&lt;h3 id=&#34;zotero-better-bibtex&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#zotero-better-bibtex&#34;&gt;#&lt;/a&gt; Zotero Better BibTex&lt;/h3&gt;
+&lt;p&gt;方便引用，後面設定教學&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9zbmFpbHdpc2guY29tLzI5MS8=&#34;&gt;參考這裡&lt;/span&gt;。這邊要特別注意不同設備的插件設定不會同步。所以筆電、桌機等都會要引用文獻時就要注意插件設定是否相同，也因此這裏特別對此插件寫個筆記。另外因為 zotero 改版了，所以 GUI 介面會與接下來的示範有些微不同。但要注意與設定的地方是相同的有時間再更新惹。&lt;/p&gt;
+&lt;h4 id=&#34;如何在-latex-中用-zotero-引用參考文獻&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#如何在-latex-中用-zotero-引用參考文獻&#34;&gt;#&lt;/a&gt; 如何在 latex 中用 Zotero 引用參考文獻？&lt;/h4&gt;
+&lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9yZXRvcnF1ZS5yZS96b3Rlcm8tYmV0dGVyLWJpYnRleC8=&#34;&gt;betterbibtex 官網&lt;/span&gt;&lt;br /&gt;
+官網可以點選右邊菜單的 Download 到 github 下載 .xpi 檔&lt;/p&gt;
+&lt;p&gt;接著在 Zotero 點選 Tool -&amp;gt; Add-ons&lt;br /&gt;
+&lt;img data-src=&#34;https://imgur.com/t9dSebx.png&#34; alt=&#34;alt text&#34; /&gt;&lt;br /&gt;
+ 然後新的視窗中點選 設定 (右上小齒輪) -&amp;gt; Install Add-ons From File -&amp;gt; 選擇剛剛下載的 .xpi 檔 -&amp;gt; 新視窗使否信任選擇 Install&lt;br /&gt;
+&lt;img data-src=&#34;https://imgur.com/vVauHhM.png&#34; alt=&#34;alt text&#34; /&gt;&lt;br /&gt;
+ 裝好後如下圖所示，需重新起動&lt;br /&gt;
+&lt;img data-src=&#34;https://imgur.com/Pqh2bYY.png&#34; alt=&#34;alt text&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;接下來是建議設定:&lt;br /&gt;
+Edit -&amp;gt; Preference -&amp;gt; Better BibTeX -&amp;gt; Open Better BibteX preference&lt;br /&gt;
+ 首先是 Citation key 中 Citation key formula&lt;/p&gt;
+&lt;p&gt;auth.lower + shorttitle(1,1) + year&lt;/p&gt;
+&lt;p&gt;將 latex 中要 cite 時的名稱為 作者姓氏 + 論文標題第一個字 + 年份&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://imgur.com/M7BNNID.png&#34; alt=&#34;alt text&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;在 Export -&amp;gt; Fields -&amp;gt; Fields to omit from export (comma-separated) 中輸入 abstract,note,file,keyword&lt;/p&gt;
+&lt;p&gt;這是設定匯出至.bib 檔案時不包含摘要、註解、關鍵字、附件目錄等不必要的資訊。&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://imgur.com/NvxEoa2.png&#34; alt=&#34;alt text&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;接著是在 Export -&amp;gt; Miscellaneous 取消勾選預設的 Apply case-protection to capitalized words by enclosing them in braces (標題關鍵字全部大寫的設定)。&lt;br /&gt;
+這一項如果不取消勾選，導出的.bib 檔案中，title 的某些字會被花括號包裹，如此，會導致 /printbibliography 時，英文標題中的單字全部大寫。 例如：{Trade} Value 會變成 TRADE Value，這在大多數情況下是不符合參考文獻規範的。 此選項具體可參考 Better BibTex FAQ。&lt;br /&gt;
+&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1JvbmdfR29uZy9hcnRpY2xlL2RldGFpbHMvMTI3MzY3ODQ2&#34;&gt;參考網站&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://imgur.com/RVUYrXg.png&#34; alt=&#34;alt text&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;然後按 OK 就設定好 Bbetterbibtexetter 啦！&lt;br /&gt;
+ 還要在 Zotero 中 Edit -&amp;gt; Preference -&amp;gt; Eeport -&amp;gt; Item Format -&amp;gt; 選擇 Better BibLaTex 即可&lt;br /&gt;
+&lt;img data-src=&#34;https://imgur.com/nSyDAfo.png&#34; alt=&#34;alt text&#34; /&gt;&lt;br /&gt;
+&lt;img data-src=&#34;https://imgur.com/9qgKDCh.png&#34; alt=&#34;alt text&#34; /&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;選擇欲引用之文獻 (可多選) ctrl+shift+C 複製後直接貼上即可&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;若欲複製文末參考文獻 ctrl+shift+C 或點選編輯→複製參考文獻條&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;記得新加入的文獻或是一開始要在 My Library 全選文獻 (Ctrl + a) -&amp;gt; 右鍵選單選擇 -&amp;gt; Better BibTex -&amp;gt; Refresh BibTex key (Better BibTex 插件才會更新你 bib 的引入格式)&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://imgur.com/P0YNERs.png&#34; alt=&#34;alt text&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;如此選取文獻 (單或複數) 用 Ctrl Shift C 就可以複製 .bib 的格式了。如下所示&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;@article&amp;#123;pengRobust2011,
+  title = &amp;#123;A Robust Integral Type Backstepping Controller Design for Control of Uncertain Nonlinear Systems Subject to Disturbance&amp;#125;,
+  author = &amp;#123;Peng, Chao-Chung and Li, Yun-Ze and Chen, Chieh-Li&amp;#125;,
+  date = &amp;#123;2011-05-01&amp;#125;,
+  journaltitle = &amp;#123;International Journal of Innovative Computing, Information and Control&amp;#125;,
+  shortjournal = &amp;#123;International Journal of Innovative Computing, Information and Control&amp;#125;,
+  volume = &amp;#123;7&amp;#125;
+&amp;#125;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;參考&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#參考&#34;&gt;#&lt;/a&gt; 參考&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly96aHVhbmxhbi56aGlodS5jb20vcC81NDYzNDYxNTE=&#34;&gt;文献笔记更新～Zotero&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;
+ ]]></description>
+        </item>
         <item>
             <guid isPermalink="true">https://to-pro.github.io/matlab/LMI/</guid>
             <title>非線性系統穩定性證明 via LMI</title>
